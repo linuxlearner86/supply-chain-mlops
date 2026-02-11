@@ -1,0 +1,12 @@
+stages:
+
+  train:
+
+    cmd: python src/training/train.py
+
+    deps:
+      - src/training/train.py
+      - data/raw/sales.csv
+
+    outs:
+      - models/demand_forecast_model.pkl

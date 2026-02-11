@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/training/train.py
+    deps:
+    - path: data/raw/sales.csv
+      hash: md5
+      md5: 3b0bf97c3f2baabd2ba54196a26961ac
+      size: 379235110
+    - path: src/training/train.py
+      hash: md5
+      md5: 6507ebd2d2c811552ac2fb30780b06f5
+      size: 3199
+    outs:
+    - path: models/demand_forecast_model.pkl
+      hash: md5
+      md5: c0fe37ab43a7f9692c129423fba84b2b
+      size: 369608

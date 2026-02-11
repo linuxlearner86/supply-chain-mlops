@@ -4,5 +4,6 @@ scikit-learn
 mlflow
 fastapi
 uvicorn
+joblib
 dvc
 python-dotenv
