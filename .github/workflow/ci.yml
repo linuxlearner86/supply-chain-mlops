@@ -1,0 +1,33 @@
+name: Supply Chain MLOps CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Verify training pipeline
+      run: |
+        python src/training/train.py
+
+    - name: Verify API loads
+      run: |
+        python -c "from src.inference.predict import app; print('API Loaded Successfully')"
