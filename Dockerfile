@@ -1,9 +1,8 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 COPY . /app
 
-# Install Linux dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     gcc \
@@ -15,9 +14,8 @@ RUN apt-get update && apt-get install -y \
     liblapack-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install Python deps
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
-CMD ["uvicorn","src.inference.predict:app","--host","0.0.0.0","--port","8000"]
+CMD ["uvicorn", "src.inference.predict:app", "--host", "0.0.0.0", "--port", "8000"]
